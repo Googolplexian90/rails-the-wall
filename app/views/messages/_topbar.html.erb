@@ -1,0 +1,10 @@
+<div id="topbar">
+  <h2>The Wall
+  <% if session[:user].nil? %>
+  </h2><p><a href="/signin">Sign in as Guest</a></p>
+  <% elsif session[:user]>0 %>
+  </h2><p>Welcome <%= User.find(session[:user]).first_name %>&emsp;<a href="/signoff">Sign Off</a></p>
+  <% else %>
+  </h2><p>Welcome Guest&emsp;<a href="/signoff">Sign Off</a></p>
+  <% end %>
+</div>

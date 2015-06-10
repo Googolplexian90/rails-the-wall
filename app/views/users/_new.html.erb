@@ -1,0 +1,10 @@
+<h3>Sign Up</h3>
+<form action="/signup" method="post">
+  <label for="user[first_name]">First Name: <input type="text" name="user[first_name]" value="<%= @user.first_name %>"></label>
+  <label for="user[last_name]">Last Name: <input type="text" name="user[last_name]" value="<%= @user.last_name %>"></label>
+  <label for="user[email]">Email Address: <input type="text" name="user[email]" value="<%= @user.email %>"></label>
+  <label for="user[password]">Password: <input type="text" name="user[password]"></label>
+  <label for="user[password_confirmation]">Confirm Password: <input type="text" name="user[password_confirmation]"></label>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Register">
+</form>

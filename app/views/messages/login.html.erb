@@ -1,0 +1,13 @@
+<% # This is the view loaded when a user is not logged in %>
+<% content_for :title do %>
+  Login/Register
+<% end %>
+<%= render 'topbar' %>
+<% #This section is for registering a new user %>
+<section>
+  <%= render 'users/new' %>
+</section>
+<% #This section is for returning users to log in %>
+<section>
+  <%= render 'sessions/new' %>
+</section>

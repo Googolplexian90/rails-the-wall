@@ -1,0 +1,7 @@
+<h3>Sign In</h3>
+<form method="post" action="/signin">
+  <label fpr="session[email]">Email: <input type="email" name="session[email]"></label>
+  <label for="session[password]">Password: <input type="password" name="session[password]"></label>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Log In">
+</form>

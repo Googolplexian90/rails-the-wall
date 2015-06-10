@@ -1,0 +1,24 @@
+<div class="comment">
+  <% #comment variable set by the file rendering this one %>
+  <p><%= comment.user.first_name+' '+comment.user.last_name %> &ndash; <%= comment.created_at.strftime('%B %-d, %Y') %></p>
+  <p><%= comment.post %></p>
+  <% if comment.comments.length>0 %>
+  <% #If there are nested comments, look through them %>
+  <% comment.comments.each do |c| %>
+    <% #Call a new instance of this partial, using the 
+    # looping variable instead of the current comment
+    %>
+    <%= render partial:'comments/show', locals:{comment: c} %>
+  <% end %>
+  <% end %>
+  <% #Now that we're done retrieving comments, put in the form
+  # to add a comment as a child of this instance
+  %>
+  <form action="comments" method="post">
+    <textarea name="comment[post]"></textarea>
+    <input type="hidden" name="comment[parent_id]" value="<%= comment.id %>">
+    <input type="hidden" name="comment[parent_type]" value="comment">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+    <input type="submit" value="Post Comment">
+  </form>
+</div>

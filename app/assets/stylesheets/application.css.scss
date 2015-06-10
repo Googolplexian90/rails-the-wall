@@ -1,0 +1,73 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+ // Global variables any file can use
+$border: #999;
+$focus: #87CEEB;
+$success: #008000;
+$info: #004080;
+$error: #800000;
+//Global mixins any file can use
+@mixin button($base){
+	border: 0.125em solid darken($base,6.25%);
+	background-color: $base;
+	border-radius: 0.25em;
+	color: #ddd;
+	line-height: 1.5;
+	padding: 0 0.5em;
+	font-weight: bold;
+	box-shadow: 0 -0.75em 0.125em -0.125em lighten($base,6.25%) inset;
+	&:focus {
+		box-shadow: none;
+	}
+}
+
+//Layout and topbar styles
+body {
+	font: 16px/1.25 Verdana,arial,sans-serif;
+	margin: 0;
+	padding: 3.5em 0.25em 0;
+}
+#topbar {
+	border-bottom: 1px solid #222;
+	background-color: #f5f5f5;
+	position: fixed;
+	height: 3.5em;
+	top: 0;
+	left: 0;
+	right: 0;
+	h2 {
+		display: inline-block;
+		width: 70%;
+		padding-left: 5%;
+		margin: 0.75em 0 0.5em
+	}
+	p {
+		text-align: right;
+		width: 20%;
+		padding-right: 5%;
+		display: inline-block;
+		a {
+			color: $error;
+			&:hover {
+				color: lighten($error, 12.5%);
+			}
+		}
+	}
+}
+
+//Import the rest of the styles
+@import "sessions";
+@import "users";
+@import "messages";
+@import "comments";

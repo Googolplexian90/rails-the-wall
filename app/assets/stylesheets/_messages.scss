@@ -1,0 +1,30 @@
+// Place all the styles related to the Messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+form textarea {
+	width: 100%;
+	resize: vertical;
+	font-family: Verdana, arial, sans-serif;
+	border-width: 1px;
+	border-style: solid;
+	border-color: $border lighten($border,12.5%) lighten($border,12.5%);
+	&:focus {
+		border-color: $focus lighten($focus,12.5%) lighten($focus,12.5%);
+		box-shadow: 0 0 0.5em $focus;
+	}
+}
+main {
+	display: block;
+	width: 87.5%;
+	margin: 0 auto;
+}
+.message {
+	display: block;
+	margin: 0.5em 0 0.75em;
+	border-top: 1px solid $success;
+	border-bottom: 1px solid $success;
+	padding: 0.25em 0;
+	input[type="submit"] {
+		@include button($success)
+	}
+}

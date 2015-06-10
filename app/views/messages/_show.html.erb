@@ -1,0 +1,28 @@
+<% @messages.each do |m| %>
+<div class="message">
+  <p><%= m.user.first_name+' '+m.user.last_name %> &ndash; <%= m.created_at.strftime('%B %-d, %Y') %></p>
+  <p><%= m.post %></p>
+  <% if m.comments.length>0 %>
+  <% m.comments.each do |c| %>
+    <% # load the html for a comment on each comment
+    # set our each variable to be the local one referenced
+    # in the file 
+    %>
+    <%= render partial:'comments/show', locals:{comment: c} %>
+  <% end %>
+  <% end %>
+  <% # Once we're done looping through all our comments,
+  # render the form for adding a new one to this message
+
+  # do not render if user is guest
+  if session[:user] > 0 %>
+  <form action="/comments" method="post">
+    <textarea name="comment[post]"></textarea>
+    <input type="hidden" name="comment[parent_id]" value="<%= m.id %>">
+    <input type="hidden" name="comment[parent_type]" value="message">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value="Post Comment">
+  </form>
+  <% end %>
+</div>
+<% end %>
